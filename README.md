@@ -2,13 +2,13 @@
 
 Framework for bash
 
-- [Requirements](##Requirements)
-- [How to use](##How-to-use)
-    - [Bash](###Bash)
-    - [Powershell](###Powershell)
-- [Project details](##Project-details)
-    - [Core](###Core)
-    - [Modules](###Modules)
+- [Requirements](#requirements)
+- [How to use](#how-to-use)
+  - [Bash](#bash)
+  - [Powershell](#powershell)
+- [Project details](#project-details)
+  - [Core](#core)
+  - [Modules](#modules)
 
 ## Requirements
 
