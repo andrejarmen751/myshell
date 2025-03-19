@@ -1,0 +1,25 @@
+#Configuració Entorn DEV
+[mysqld]
+#Connexions
+max-connections = 30
+
+#Gestio recursos servidor
+innodb-buffer-pool-size = 4G
+innodb_buffer_pool_chunk_size = 128M
+innodb_buffer_pool_instances = 16
+innodb_page_cleaners = 10
+innodb-log-buffer-size = 1M
+
+#Temporals
+temptable_use_mmap = ON
+temptable_max_ram = 512M
+
+#Optimitzacio consultes
+key-buffer-size = 16M
+tmp-table-size = 16M
+sort-buffer-size = 16M
+read-buffer-size = 32M
+read-rnd-buffer-size = 128M
+join-buffer-size = 128M
+thread-stack = 128K
+binlog-cache-size = 4096

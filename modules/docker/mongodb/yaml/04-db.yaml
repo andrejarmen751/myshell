@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: challenge-db
+  namespace: challenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: challenge-db
+      tier: database
+  template:
+    metadata:
+      labels:
+        app: challenge-db
+        tier: database
+    spec:
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+      containers:
+        - image: mongo:latest
+          imagePullPolicy: Always
+          name: challenge-db
+          env:
+            - name: MONGO_INITDB_ROOT_USERNAME
+              value: root
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              value: example
+            - name: MONGO_INITDB_DATABASE
+              value: restaurant
+          ports:
+            - containerPort: 27017
+              name: 27017tcp
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          livenessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 45
+            periodSeconds: 5
+          readinessProbe:
+            tcpSocket:
+              port: 27017
+            initialDelaySeconds: 45
+            periodSeconds: 5
+          volumeMounts:
+            - mountPath: /data/db
+              name: challenge-db
+      volumes:
+        - name: challenge-db
+          persistentVolumeClaim:
+            claimName: challenge-db
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - "node-name"
+                      - "node-name"

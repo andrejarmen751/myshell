@@ -1,0 +1,12 @@
+services:
+  nginx:
+    hostname: nginx
+    container_name: nginx
+    build:
+      context: '.'
+      dockerfile: ./Docker/.Dockerfile
+      args:
+        DOCKER_REGISTRY_CACHE: "docker.io"
+        NGINX_IMAGE: "nginx:latest"
+    ports:
+      - "80:80"

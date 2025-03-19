@@ -1,0 +1,16 @@
+#Configuració Entorn DEV
+[mysqld]
+max-connections = 30
+
+key-buffer-size = 32M
+query-cache-size = 32M
+tmp-table-size = 16M
+innodb-buffer-pool-size = 4M
+innodb-log-buffer-size = 1M
+
+sort-buffer-size = 2M
+read-buffer-size = 8192
+read-rnd-buffer-size = 256
+join-buffer-size = 128
+thread-stack = 131072
+binlog-cache-size = 4096

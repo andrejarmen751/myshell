@@ -1,0 +1,16 @@
+BINARIS
+BINARIS/**/*
+DadesPermanents
+DadesPermanents/**/*
+src/bundles
+src/bundles/**/*
+src/configs
+src/configs/**/*
+.metadata/
+.metadata/**/*
+.sonarlint/
+.sonarlint/**/*
+RemoteSystemsTempFiles/
+RemoteSystemsTempFiles/**/*
+.DS_Store
+nb-configuration.xml

@@ -1,0 +1,9 @@
+# pwsh
+powershell_yes=$(cat /etc/shells | grep -Eo 'pws[a-z]+' | head -1)
+powershell="pwsh"
+if [ "$powershell_yes" = "$powershell" ]
+        then
+                mkdir -p $HOME/.config/powershell/
+                cp -rf "$project_path"/core/shells/pwsh/Microsoft.PowerShell_profile.ps1 $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
+                export genera_password="pwsh $project_path/core/shells/pwsh/functions/genera_password.ps1"
+fi

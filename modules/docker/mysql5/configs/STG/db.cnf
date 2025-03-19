@@ -1,0 +1,16 @@
+#Configuració Entorn STG
+[mysqld]
+max-connections = 100
+
+key-buffer-size = 64M
+query-cache-size = 64M
+tmp-table-size = 32M
+innodb-buffer-pool-size = 32M
+innodb-log-buffer-size = 32M
+
+sort-buffer-size = 8M
+read-buffer-size = 8192
+read-rnd-buffer-size = 256
+join-buffer-size = 128
+thread-stack = 131072
+binlog-cache-size = 4096

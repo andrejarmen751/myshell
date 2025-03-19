@@ -1,0 +1,80 @@
+services:
+  cockroach-cert:
+    container_name: cockroach-cert
+    hostname: cockroach-cert
+    image: timveil/cockroachdb-dynamic-certs:latest
+    volumes:
+      - certs:/.cockroach-certs
+    environment:
+      - NODE_ALTERNATIVE_NAMES=*.intra.bcn.cat localhost
+  cockroach0:
+    container_name: cockroach0
+    hostname: cockroach0.intra.bcn.cat
+    image: cockroachdb/cockroach:latest
+    command: start --cluster-name=example-secure --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --listen-addr=cockroach0.intra.bcn.cat:26257 --advertise-addr=cockroach0.intra.bcn.cat:26257 --join=cockroach0.intra.bcn.cat
+    volumes:
+      - cockroach0:/cockroach/cockroach-data
+      - certs:/certs:ro
+    depends_on:
+      - cockroach-cert
+  cockroach1:
+    container_name: cockroach1
+    hostname: cockroach1.intra.bcn.cat
+    image: cockroachdb/cockroach:latest
+    command: start --cluster-name=example-secure --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --listen-addr=cockroach1.intra.bcn.cat:26257 --advertise-addr=cockroach1.intra.bcn.cat:26257 --join=cockroach0.intra.bcn.cat
+    volumes:
+      - cockroach1:/cockroach/cockroach-data
+      - certs:/certs:ro
+    depends_on:
+      - cockroach-cert
+      - cockroach0
+  cockroach2:
+    container_name: cockroach2
+    hostname: cockroach2.intra.bcn.cat
+    image: cockroachdb/cockroach:latest
+    command: start --cluster-name=example-secure --logtostderr=WARNING --log-file-verbosity=WARNING --certs-dir=/certs --listen-addr=cockroach2.intra.bcn.cat:26257 --advertise-addr=cockroach2.intra.bcn.cat:26257 --join=cockroach0.intra.bcn.cat
+    volumes:
+      - cockroach2:/cockroach/cockroach-data
+      - certs:/certs:ro
+    depends_on:
+      - cockroach-cert
+      - cockroach0
+  lb:
+    container_name: lb
+    hostname: lb.intra.bcn.cat
+    image: timveil/dynamic-haproxy:latest
+    ports:
+      - "26257:26257"
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - NODES=cockroach0.intra.bcn.cat cockroach1.intra.bcn.cat cockroach2.intra.bcn.cat
+    depends_on:
+      - cockroach0
+      - cockroach1
+      - cockroach2
+  roach-init:
+    container_name: roach-init
+    hostname: roach-init
+    image: timveil/cockroachdb-remote-client:latest
+    environment:
+      - COCKROACH_HOST=cockroach0.intra.bcn.cat:26257
+      - COCKROACH_INSECURE=false
+      - COCKROACH_INIT=true
+      - COCKROACH_CERTS_DIR=/certs
+      - DATABASE_NAME=sistemes
+      - DATABASE_USER=sistemes
+      - DATABASE_PASSWORD=1nternet!
+    volumes:
+      - certs:/certs:ro
+    depends_on:
+      - lb
+      - cockroach-cert
+volumes:
+  certs: {}
+  cockroach0: {}
+  cockroach1: {}
+  cockroach2: {}
+networks:
+  default:
+    name: sistemes

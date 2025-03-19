@@ -1,0 +1,1 @@
+docker exec -it syslog-syslog-1 /bin/bash

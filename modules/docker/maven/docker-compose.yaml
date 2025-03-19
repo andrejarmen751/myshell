@@ -1,0 +1,17 @@
+services:
+  maven:
+    container_name: maven
+    build:
+      context: '.'
+      dockerfile: ./Docker/.Dockerfile
+      args:
+        DOCKER_REGISTRY_CACHE: "docker.io"
+        IMATGE_MAVEN: "maven:latest"
+    volumes:
+      - maven_data:/usr/src/dependencies
+    restart: always
+volumes:
+  maven_data: {}
+networks:
+  default:
+    name: inrfa-gaming

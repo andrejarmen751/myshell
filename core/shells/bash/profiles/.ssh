@@ -1,0 +1,10 @@
+#!/bin/bash
+# SSH
+eval `ssh-agent -s` >/dev/null 1>&2
+for file in ~/.ssh/*; do
+    if file "$file" | grep -q "OpenSSH private key"
+    then
+        ssh-add $file >/dev/null 1>&2
+    fi
+done
+ssh-add -l -E sha256 >/dev/null 1>&2

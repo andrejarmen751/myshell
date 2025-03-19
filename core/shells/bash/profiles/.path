@@ -1,0 +1,23 @@
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+#set PATH so it includes pyenv bin if it exists
+if [ -d "$HOME/.pyenv" ] ; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    PATH="$PYENV_ROOT/bin:$PATH"
+fi
+
+# set PATH so it includes usr/sbin if it exists
+if [ -d "/usr/sbin" ] ; then
+    PATH="/usr/sbin:$PATH"
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/'$USER'/google-cloud-sdk/path.bash.inc' ]; then . '/home/'$USER'/google-cloud-sdk/path.bash.inc'; fi

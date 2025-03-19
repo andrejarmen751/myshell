@@ -1,0 +1,13 @@
+# GIT
+export HOMEBREW_GIT_PATH=$(whereis git | awk {'print $2'})
+parse_git_branch() {
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+pull_request () {
+    gh pr create --base master --head $(git branch --show-current)
+}
+
+pull_request_az () {
+    az repos pr create --source-branch $(git branch --show-current) --target-branch main
+}

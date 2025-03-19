@@ -1,0 +1,17 @@
+# Allow to use less on compressed files and others, without decompress
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+
+export GOPATH=~/go
+
+
+
+
+#
+command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init --path)" > /dev/null 2>&1
+command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)" > /dev/null 2>&1
+
+#eval "$(pyenv virtualenv-init -)"
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+#

@@ -1,0 +1,16 @@
+#Configuració Entorn PRO
+[mysqld]
+max-connections = 200
+
+key-buffer-size = 128M
+query-cache-size = 128M
+tmp-table-size = 64M
+innodb-buffer-pool-size = 64M
+innodb-log-buffer-size = 64M
+
+sort-buffer-size = 16M
+read-buffer-size = 8192
+read-rnd-buffer-size = 256
+join-buffer-size = 128
+thread-stack = 131072
+binlog-cache-size = 4096

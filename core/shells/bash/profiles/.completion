@@ -1,0 +1,37 @@
+# Completion OCI cloud commands
+[[ -e "/home/$USER/lib/oracle-cli/lib/python3.11/site-packages/oci_cli/bin/oci_autocomplete.bash" ]] && source "/home/$USER/lib/oracle-cli/lib/python3.11/site-packages/oci_cli/bin/oci_autocomplete.bash"
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/'$USER'/google-cloud-sdk/completion.bash.inc' ]; then . '/home/'$USER'/google-cloud-sdk/completion.bash.inc'; fi
+
+# Enable Terraform completion
+complete -C terraform terraform
+
+# aws cli
+complete -C aws_completer aws
+
+# Enable bash completion
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
+# Enable git completion
+if ! shopt -oq posix; then
+    if [ -f ~/git-completion.bash ]; then
+        . ~/git-completion.bash
+    else
+        git_verion=$(git version | awk '{print $3}')
+        curl -o ~/git-completion.bash https://raw.githubusercontent.com/git/git/v$git_verion/contrib/completion/git-completion.bash > /dev/null 2>&1
+        . ~/git-completion.bash
+    fi
+fi
+
+## Kubectl bash autocompletion
+if [ -e /usr/share/bash-completion/bash_completion ]; then
+    source /usr/share/bash-completion/bash_completion > /dev/null 2>&1
+    command -v kubectl > /dev/null 2>&1 && source <(kubectl completion bash) > /dev/null 2>&1
+fi

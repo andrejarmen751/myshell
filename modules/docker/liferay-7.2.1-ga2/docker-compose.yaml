@@ -1,0 +1,47 @@
+services:
+  manteniment_1:
+    image: alpine
+    container_name: manteniment_1
+    volumes:
+      - ./Docker/logs:/tmp
+    command: >
+      ash -c "rm -rf /tmp/*"
+
+  liferay-7.2.1-ga2:
+    container_name: liferay-7.2.1-ga2
+    depends_on:
+      - manteniment_1
+    build:
+      context: '.'
+      dockerfile: ./Docker/.Dockerfile
+      args:
+        DOCKER_REGISTRY_CACHE: "docker.io"
+        IMATGE_APLICACIO: "liferay/portal:7.2.1-ga2"
+    volumes:
+      - ./Docker/logs:/opt/liferay/logs
+      - ./Docker/liferay_data:/mnt/liferay
+    ports:
+      - "4072:8080"
+      #- "4000:8000"
+    environment:
+      BCNACT_ENTORN: DEV
+      MYSQL_DATABASE: sistemes
+      MYSQL_USER: sistemes
+      MYSQL_PASSWORD: 1nternet!
+      MYSQL_ROOT_PASSWORD: 1nternet!
+      MYSQL_HOST: mysql5
+      MYSQL_PORT: 4036
+      #JPDA_ADDRESS: 8000
+      #JPDA_TRANSPORT: dt_socket
+      UMASK: 0022
+  liferay7.2:
+    image: httpd
+    container_name: sistemes_logs_liferay7.2
+    restart: always
+    volumes:
+      - ./Docker/logs:/usr/local/apache2/htdocs
+    ports:
+      - "4772:80"
+networks:
+  default:
+    name: sistemes

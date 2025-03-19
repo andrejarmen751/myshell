@@ -1,0 +1,26 @@
+services:
+  mysql8:
+    container_name: mysql8
+    build:
+      context: '.'
+      dockerfile: ./Docker/dockerfile
+      args:
+        DOCKER_REGISTRY_CACHE: "docker.io"
+        IMAGE_MYSQL8: "mysql:8.4.4"
+    volumes:
+      - db_data_2:/var/lib/mysql
+      - ./Docker/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+    ports:
+      - "4836:3306"
+    restart: always
+    environment:
+      ENVIRONMENT: DEV
+      MYSQL_ROOT_PASSWORD: 1nternet!
+      MYSQL_DATABASE: sistemes-dos
+      MYSQL_USER: sistemes
+      MYSQL_PASSWORD: 1nternet!
+volumes:
+  db_data_2: {}
+networks:
+  default:
+    name: sistemes

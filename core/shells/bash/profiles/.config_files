@@ -1,0 +1,37 @@
+#!/bin/bash
+if [ -f ~/.vimrc ]; then
+    :
+else
+    curl -o ~/.vimrc https://raw.githubusercontent.com/e-lemongrab/config_files/refs/heads/master/home/.vimrc > /dev/null 2>&1
+fi
+if [ -f ~/.tmux.conf ]; then
+    :
+else
+    curl -o ~/.tmux.conf https://raw.githubusercontent.com/e-lemongrab/config_files/refs/heads/master/home/.tmux.conf > /dev/null 2>&1
+fi
+if [ -f ~/.inputrc ]; then
+    :
+else
+    curl -o ~/.inputrc https://raw.githubusercontent.com/e-lemongrab/config_files/refs/heads/master/home/.inputrc > /dev/null 2>&1
+fi
+if [ -f ~/.gitconfig ]; then
+    :
+else
+    curl -o ~/.gitconfig https://raw.githubusercontent.com/e-lemongrab/config_files/refs/heads/master/home/.gitconfig > /dev/null 2>&1
+fi
+if [ -f ~/.alacritty.toml ]; then
+    :
+else
+    curl -o ~/.alacritty.toml https://raw.githubusercontent.com/e-lemongrab/config_files/refs/heads/master/home/.alacritty.toml > /dev/null 2>&1
+fi
+if ! command -v firefox &> /dev/null; then
+    :
+else
+    firefox_profiles=$(awk -F'=' '/^Path=/{print $2}' ~/.mozilla/firefox/profiles.ini)
+    # Iterate over each profile path
+    while IFS= read -r profile; do
+        if [ ! -f ~/.mozilla/firefox/"$profile"/user.js ]; then
+            curl -o ~/.mozilla/firefox/"$profile"/user.js https://raw.githubusercontent.com/e-lemongrab/config_files/refs/heads/master/firefox/user.js > /dev/null 2>&1
+        fi
+    done <<< "$firefox_profiles"
+fi

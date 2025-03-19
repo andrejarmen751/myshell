@@ -1,0 +1,119 @@
+#Exports
+export mod_colors="$project_path"/core/shells/bash/functions/colors.bash
+export ssl_functions="$project_path"/modules/utils/ssl/functions.bash
+export certs_functions="$project_path"/modules/utils/certs/functions.bash
+source "$project_path"/core/shells/bash/functions/crlf_to_lf.bash
+# Facilities
+alias cls="clear"
+alias c="code ."
+alias free="free -mh"
+alias grep="grep --color=auto"
+alias ps="ps -elfj --forest | less -N"
+alias ls="ls -lah --color"
+alias nano="nano -l"
+alias h="history"
+alias e="bash $project_path/core/scripts/exit.bash;exit"
+alias clear_ram="sudo bash -c 'echo 1 > /proc/sys/vm/drop_caches'"
+alias cat_input="read input; cat * | grep -r --exclude-dir=".*" $input"
+# bw - bitwarden
+alias bw="$HOME/'.config/Bitwarden CLI/bw'"
+alias bw_eu="bw config server https://vault.bitwarden.eu"
+alias bw_create="'$project_path'/modules/bw/bw-history-create.bash"
+alias bw_push="'$project_path'/modules/bw/bw-history-push.bash"
+alias bw_clone="'$project_path'/modules/bw/bw-history-clone.bash"
+#git
+alias gp="git pull"
+alias gpush="git push"
+alias gs="git status"
+alias gl="git log"
+alias gc="git log --branches --not --remotes"
+alias gsoft="git reset --soft HEAD~1"
+alias ghard="git reset --hard HEAD~1"
+alias gpr="gh pr list"
+# core
+## core - scripts - commands 
+alias myshell="/bin/bash $project_path/core/scripts/myshell.bash"
+alias checks="bash $project_path/core/scripts/checks.bash"
+alias genera_password="bash $project_path/core/scripts/genera_password.bash"
+# modules
+## modules - help - commands
+alias help_docker="bash $project_path/modules/help/docker/docker.bash"
+alias help_mysql="bash $project_path/modules/help/mysql/mysql.bash"
+alias help_kubectl="bash $project_path/modules/help/kubectl/kubectl.bash"
+alias help_git="bash $project_path/modules/help/git/git.bash"
+alias help_gcloud="bash $project_path/modules/help/gcloud/gcloud.bash"
+alias help_terraform="bash $project_path/modules/help/terraform/terraform.bash"
+alias help_dig="bash $project_path/modules/help/dig/dig.bash"
+alias help_az="bash $project_path/modules/help/az/az.bash"
+alias help_arch="bash $project_path/modules/help/arch/arch.bash"
+## modules - docker
+docker_groups=$(cat /etc/group | grep docker | awk -F: '{ printf $1}')
+docker_str="docker"
+if [ "$docker_groups" = "$docker_str" ]
+        then
+alias dockrm="bash $project_path/modules/docker/dock/dockrm.bash"
+alias alpine="bash $project_path/modules/docker/alpine/alpine.bash"
+alias alpine_exec="bash $project_path/modules/docker/alpine/alpine_exec.bash"
+alias mysql5="bash $project_path/modules/docker/mysql5/mysql5.bash"
+alias mysql5_exec="bash $project_path/modules/docker/mysql5/mysql5_exec.bash"
+alias mysql8="bash $project_path/modules/docker/mysql8/mysql8.bash"
+alias mysql8_exec="bash $project_path/modules/docker/mysql8/mysql8_exec.bash"
+alias tomcat9="bash $project_path/modules/docker/tomcat9/tomcat9.bash"
+alias tomcat9_exec="bash $project_path/modules/docker/tomcat9/tomcat9_exec.bash"
+alias apache="bash $project_path/modules/docker/apache/apache.bash"
+alias openldap="bash $project_path/modules/docker/openldap/openldap.bash"
+alias mongodb="bash $project_path/modules/docker/mongodb/mongodb.bash"
+alias mongodb_exec="bash $project_path/modules/docker/mongodb/mongodb_exec.bash"
+alias maven="bash $project_path/modules/docker/maven/maven.bash"
+alias maven_exec="bash $project_path/modules/docker/maven/maven_exec.bash"
+alias nexus="bash $project_path/modules/docker/nexus/nexus.bash"
+alias nexus_exec="bash $project_path/modules/docker/nexus/nexus_exec.bash"
+alias passbolt="bash $project_path/modules/docker/passbolt/passbolt.bash"
+alias jira_software="bash $project_path/modules/docker/jira-software/jira-software.bash"
+alias jira_software_cero_exec="bash $project_path/modules/docker/jira-software/jira-software_cero_exec.bash"
+alias jira_software_uno_exec="bash $project_path/modules/docker/jira-software/jira-software_uno_exec.bash"
+alias nodejs="bash $project_path/modules/docker/nodejs/nodejs.bash"
+alias nodejs_exec="bash $project_path/modules/docker/nodejs/nodejs_exec.bash"
+alias nginx="bash $project_path/modules/docker/nginx/nginx.bash"
+alias nginx_exec="bash $project_path/modules/docker/nginx/nginx_exec.bash"
+alias k6="pwsh $project_path/modules/docker/k6/k6.ps1"
+alias k6_exec="bash $project_path/modules/docker/k6/k6_exec.bash"
+else
+echo "To use docker you must be in docker group"
+fi
+## modules - k8s
+check_kubectl=$(kubectl &> /dev/null; echo $?)
+if [ "$check_kubectl" = "0" ]
+        then
+export k8s_env_path=""$project_path"/modules/k8s/env"
+alias k3s="kubectl --kubeconfig ~/.kube/k3s"
+alias api="bash $project_path/modules/k8s/menus/api/api.bash"
+alias checks_k8s="bash $project_path/modules/k8s/menus/checks_k8s/checks_k8s.bash"
+alias pod_state_ymls="bash $project_path/modules/k8s/menus/pod_state/ymls.bash"
+alias pod_actions_exec="bash $project_path/modules/k8s/menus/pod_actions/exec.bash"
+alias pod_actions_copy_from="bash $project_path/modules/k8s/menus/pod_actions/copy_from.bash"
+alias pod_actions_logs="bash $project_path/modules/k8s/menus/pod_actions/logs.bash"
+alias pod_actions_describe="bash $project_path/modules/k8s/menus/pod_actions/describe.bash"
+alias pod_actions_labels="bash $project_path/modules/k8s/menus/pod_actions/labels.bash"
+alias pvc="bash $project_path/modules/k8s/menus/storage/pvc.bash"
+alias storage_pvc_elimina="bash $project_path/modules/k8s/menus/storage/pvc_elimina.bash"
+alias storage_pv_released="bash $project_path/modules/k8s/menus/storage/pv_released.bash"
+alias storage_pv_elimina="bash $project_path/modules/k8s/menus/storage/pv_elimina.bash"
+alias rbac_crea="bash $project_path/modules/k8s/menus/rbac/crea_claus.bash"
+alias rbac_elimina="bash $project_path/modules/k8s/menus/rbac/elimina_claus.bash"
+alias secrets="bash $project_path/modules/k8s/menus/secrets/secrets.bash"
+fi
+## modules - minikube
+alias minikube_launch="bash $project_path/modules/minikube/menu.bash"
+## modules - ssh
+alias ssh_create="bash $project_path/modules/ssh/ssh_create/keys.bash"
+## modules - john
+check_john=$(john &> /dev/null; echo $?)
+if [ "$check_john" = "0" ]
+then
+        alias john_dictionary="bash $project_path/modules/john/dictionary/dictionary.bash"
+        alias john_unshadow="bash $project_path/modules/john/unshadow/unshadow.bash"
+        alias john_zip="bash $project_path/modules/john/zip/zip.bash"
+fi
+## modules - yt-dlp
+alias download="bash $project_path/modules/yt-dlp/yt-dlp.bash"

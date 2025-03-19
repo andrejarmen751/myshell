@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: challenge-service-db
+  namespace: challenge
+spec:
+  ports:
+    - name: http
+      port: 27017
+      protocol: TCP
+      targetPort: 27017
+  selector:
+    app: challenge-db
+    tier: database
+  type: ClusterIP

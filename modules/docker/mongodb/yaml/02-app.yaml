@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: challenge
+  namespace: challenge
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: challenge
+      tier: frontal
+  template:
+    metadata:
+      labels:
+        app: challenge
+        tier: frontal
+    spec:
+      containers:
+        - image: builded-image
+          imagePullPolicy: Always
+          name: challenge
+          ports:
+            - containerPort: 8080
+              name: 80tcp
+              protocol: TCP
+          resources:
+            limits:
+              cpu: 200m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 45
+            periodSeconds: 5
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 45
+            periodSeconds: 5
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: kubernetes.io/hostname
+                    operator: In
+                    values:
+                      - "node-name"
+                      - "node-name"

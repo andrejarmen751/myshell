@@ -1,0 +1,16 @@
+## History settings
+#export HISTFILE=$project_path/core/shells/bash/.bash_history
+export HISTFILE="$HOME"/.bash_history
+export HISTIGNORE="tmuxon:tmuxls:tmuxattach:sudo apt update:sudo apt upgrade:rm:pull_request_az:pull_request:code:clear:cls:ls:cd:h:e:exit:kill:streamlink: *"
+# Each entry will be prefixed with the date and time when the command was executed.
+HISTTIMEFORMAT="%F %T "
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+# append to the history file, don't overwrite it
+shopt -s histappend
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+#number of entries in memory session
+HISTSIZE=2000
+#number of entries stored on disk
+HISTFILESIZE=4000

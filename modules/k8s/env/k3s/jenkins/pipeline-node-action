@@ -1,0 +1,13 @@
+pipeline {
+    agent {
+        //[any, docker, dockerfile, label, none]
+        label 'docker'
+    }
+    stages{
+        stage("Env Variables"){
+            steps{
+                sh "printenv"
+            }
+        }
+    }
+}

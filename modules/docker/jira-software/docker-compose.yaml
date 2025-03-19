@@ -1,0 +1,55 @@
+services:
+  jira0:
+    hostname: jira-ops-dev-0
+    container_name: jiracero
+    build:
+      context: '.'
+      dockerfile: ./Docker/.Dockerfile
+      args:
+        DOCKER_REGISTRY_CACHE: "docker.io"
+        JIRA_IMAGE: "atlassian/jira-software:latest"
+    environment:
+      - ATL_PROXY_NAME=jiracero.internal
+      - ATL_PROXY_PORT=80
+      - ATL_TOMCAT_SCHEME=http
+      - JIRA_SHARED_HOME=/var/lib/jira_shared_home
+      - JIRA_HOME=/var/lib/jira_home
+    volumes:
+      - /mnt/d/jira_home:/var/lib/jira_home
+      - /mnt/d/jira_shared_home:/var/lib/jira_shared_home
+    ports:
+      - "8080:8080"
+  jira1:
+    hostname: jira-ops-dev-1
+    container_name: jirauno
+    build:
+      context: '.'
+      dockerfile: ./Docker/.Dockerfile
+      args:
+        DOCKER_REGISTRY_CACHE: "docker.io"
+        JIRA_IMAGE: "atlassian/jira-software:latest"
+    environment:
+      - ATL_PROXY_NAME=jirauno.internal
+      - ATL_PROXY_PORT=81
+      - ATL_TOMCAT_SCHEME=http
+      - JIRA_SHARED_HOME=/var/lib/jira_shared_home
+    volumes:
+      - /mnt/d/jira_home:/var/lib/jira_home
+      - /mnt/d/jira_shared_home:/var/lib/jira_shared_home
+    ports:
+      - "8081:8080"
+
+#nginx: 
+#  container_name: nginx 
+#  image: nginx:latest 
+#  volumes:
+#   - ./Docker/nginx.conf:/etc/nginx/nginx.conf 
+#  depends_on: 
+#   - jira1
+#   - jira2 
+#  ports: 
+#   - "80:80"
+#  networks: 
+#    default: 
+#      aliases:
+#       - jira.internal

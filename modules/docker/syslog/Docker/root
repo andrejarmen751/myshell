@@ -1,0 +1,3 @@
+* * * * * git -C /home/rundeck-scripts-develop/ pull
+* * * * * git -C /home/rundeck-scripts-release/ pull
+# remember to end this file with an empty new line...

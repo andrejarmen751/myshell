@@ -1,0 +1,1 @@
+docker exec -it cockroach0 /bin/bash

@@ -1,0 +1,21 @@
+services:
+  nodejs:
+    hostname: nodejs
+    container_name: nodejs
+    build:
+      context: '.'
+      dockerfile: ./Docker/.Dockerfile
+      args:
+        DOCKER_REGISTRY_CACHE: "docker.io"
+        JIRA_IMAGE: "debian:bookworm-slim"
+    # environment:
+    #  - ATL_PROXY_NAME=jiracero.internal
+    #  - ATL_PROXY_PORT=80
+    #  - ATL_TOMCAT_SCHEME=http 
+    #  - JIRA_SHARED_HOME=/var/lib/jira_shared_home
+    #  - JIRA_HOME=/var/lib/jira_home
+    # volumes:
+    #  - /mnt/d/jira_home:/var/lib/jira_home
+    #  - /mnt/d/jira_shared_home:/var/lib/jira_shared_home
+    ports:
+      - "8020:8020"

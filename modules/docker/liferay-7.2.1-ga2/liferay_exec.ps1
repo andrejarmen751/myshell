@@ -1,0 +1,1 @@
+docker exec -it liferay-7.2.1-ga2 /bin/bash

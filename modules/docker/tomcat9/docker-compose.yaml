@@ -1,0 +1,47 @@
+services:
+  manteniment_3:
+    image: alpine
+    container_name: manteniment_3
+    volumes:
+      - ./Docker/logs:/tmp
+    command: >
+      ash -c "rm -rf /tmp/*"
+
+  tomcat9:
+    container_name: tomcat9
+    depends_on:
+      - manteniment_3
+    build:
+      context: '.'
+      dockerfile: ./Docker/.Dockerfile
+      args:
+        DOCKER_REGISTRY_CACHE: "docker.io"
+        IMATGE_APLICACIO: "tomcat:9"
+    volumes:
+      - ./Docker/logs:/usr/local/tomcat/logs
+      - ./Docker/volum:/tmp/volum
+    ports:
+      - "4443:8443"
+      #- "4000:8000"
+    environment:
+      BCNACT_ENTORN: DEV
+      MYSQL_DATABASE: sistemes
+      MYSQL_USER: sistemes
+      MYSQL_PASSWORD: 1nternet!
+      MYSQL_ROOT_PASSWORD: 1nternet!
+      MYSQL_HOST: sistemes_basededades
+      MYSQL_PORT: 4036
+      #JPDA_ADDRESS: 8000
+      #JPDA_TRANSPORT: dt_socket
+      UMASK: 0022
+  logs_tomcat9:
+    image: httpd
+    container_name: sistemes_logs_tomcat9
+    restart: always
+    volumes:
+      - ./Docker/logs:/usr/local/apache2/htdocs
+    ports:
+      - "4009:80"
+networks:
+  default:
+    name: sistemes
