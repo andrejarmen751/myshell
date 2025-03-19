@@ -14,15 +14,29 @@ Mainly tested on apt systems and master branch/bash 5.2+.
 
 ## How to use
 
-Bash:
+### Bash:
 
-1. Backup your ~/.bash_profile
-2. Place file core/shells/bash/.bash_profile at $HOME
-3. Modify "project_path" and set absolute path to the project
-4. Re/Load shell
-5. Run "checks" to list compatibility and "myshell" to get the available commands to use
+1. Backup your $HOME/.bash_profile if exists
+2. Clone where you want
+````
+git clone git@github.com:e-lemongrab/myshell.git
+````
+3. Copy .bash_profile to your $HOME
+````
+cp -rfv myshell/core/shells/bash/.bash_profile $HOME
+````
+4. Run the following to set $project_path
+````
+sed -i 's|$HOME/Documents/myshell|'"$(pwd)"'/myshell|g' ~/.bash_profile
+````
+5. Restart the current shell session
+````
+exec -l $SHELL
+````
+6. Run "checks" to list compatibility and "myshell" to get the available commands to use
 
-Powershell:
+
+### Powershell:
 
 Once done the bash configuration, if you have "pwsh" installed, automatically will set the $PROFILE for powershell - $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 
 
@@ -34,10 +48,6 @@ If you want to use this profile from Windows:
 Remember to set the value for section "VARIABLE DECLARATION":
  - $global:distro=xxx
  - $global:project_path=xxx (relative path from $HOME)
-
-bash
-
-![bash](modules/readme/bash.png)
 
 ## Some project details:
 
@@ -56,7 +66,3 @@ Core files:
 core/session (called if exists on .bashrc/zshrc file)
     .var - To create variables for sensitive data like domains into scripts. Added in .gitignore.
     .aliases - Enable aliases.
-
-used tools
-
-![checks](modules/readme/checks.png)
