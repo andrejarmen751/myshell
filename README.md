@@ -12,30 +12,25 @@ Framework for bash
 
 ## Requirements
 
-Mainly tested on apt systems and master branch/bash 5.2+.
+ - Basic packages ```` git file curl ````
+
+Mainly tested on bash 5.2+.
 
 ## How to use
 
 ### Bash:
 
 1. Backup your $HOME/.bash_profile if exists
-2. Clone where you want
+2. Clone where you want, copy .bash_profile to your home and set $project_path. Then restart the current shell session.
+
 ````
 git clone git@github.com:e-lemongrab/myshell.git
-````
-3. Copy .bash_profile to your $HOME
-````
 cp -rfv myshell/core/shells/bash/.bash_profile $HOME
-````
-4. Run the following to set $project_path
-````
 sed -i 's|$HOME/Documents/myshell|'"$(pwd)"'/myshell|g' ~/.bash_profile
-````
-5. Restart the current shell session
-````
 exec -l $SHELL
 ````
-6. Run "checks" to list compatibility and "myshell" to get the available commands to use
+
+3. Run "checks" to list compatibility and "myshell" to get the available commands to use
 
 
 ### Powershell:
