@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: debug
-  namespace: logicalis
+  namespace: debug
 spec:
   containers:
   - name: debug
@@ -32,7 +32,7 @@ spec:
       limits:
         memory: "512Mi"
         cpu: "500m"
-  serviceAccountName: logicalis-report-health-check
+  serviceAccountName: debug-report-health-check
   volumes:
   - name: scripts
     configMap:

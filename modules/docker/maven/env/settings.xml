@@ -1,62 +1,46 @@
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<settings>
+    <!-- Local repository to store downloaded dependencies -->
+    <localRepository>/root/.m2/repository</localRepository>
 
-    <!-- @see http://maven.apache.org/settings.html -->
-    <!-- <localRepository/> -->
-    <!-- <interactiveMode/> -->
-    <!-- <offline/> -->
-
-    <pluginGroups>
-        <pluginGroup>org.sonarsource.scanner.maven</pluginGroup>
-    </pluginGroups>
-
-    <!-- <servers/> -->
-
+    <!-- Mirrors to speed up dependency download -->
     <mirrors>
         <mirror>
-            <id>nexus</id>
-            <name>nexus</name>
-            <url>https://nexus.domain.com/repository/maven-public</url>
-            <mirrorOf>*</mirrorOf>
+            <id>central</id>
+            <mirrorOf>central</mirrorOf>
+            <url>https://repo.maven.apache.org/maven2</url>
         </mirror>
     </mirrors>
 
-    <!-- <proxies/> -->
-
+    <!-- Active profiles -->
     <profiles>
         <profile>
-            <id>repos</id>
-            <properties>
-                <altSnapshotDeploymentRepository>nexus-snapshots::default::https://nexus.domain.com/repository/maven-snapshots</altSnapshotDeploymentRepository>
-                <altReleaseDeploymentRepository>nexus-releases::default::https://nexus.domain.com/repository/maven-releases</altReleaseDeploymentRepository>
-            </properties>
-
-            <repositories>
-                <repository>
-                    <id>nexus-repo</id>
-                    <name>Nexus</name>
-                    <url>https://nexus.domain.com/repository/maven-public</url>
-                    <snapshots>
-                        <enabled>true</enabled>
-                        <updatePolicy>always</updatePolicy>
-                    </snapshots>
-                </repository>
-            </repositories>
-        </profile>
-
-        <profile>
-            <id>sonar</id>
-            <properties>
-                <sonar.host.url>http://sonar.domain.dom:9000</sonar.host.url>
-                <sonar.login>1c8c8e6e91a1de52a941ac8c8c1742f73f01b2f2</sonar.login>
-                <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-                <sonar.language>java</sonar.language>
-            </properties>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
         </profile>
     </profiles>
 
-    <activeProfiles>
-        <activeProfile>repos</activeProfile>
-        <activeProfile>sonar</activeProfile>
-    </activeProfiles>
+    <!-- Plugin groups -->
+    <pluginGroups>
+        <pluginGroup>org.apache.maven.plugins</pluginGroup>
+    </pluginGroups>
+
+    <!-- Properties (for proxy or other configs) -->
+    <proxies>
+        <!-- Example Proxy (if needed) -->
+        <!--
+        <proxy>
+            <id>example-proxy</id>
+            <active>true</active>
+            <protocol>http</protocol>
+            <host>proxy.example.com</host>
+            <port>8080</port>
+            <username>proxyuser</username>
+            <password>somepassword</password>
+            <nonProxyHosts>www.google.com|*.example.com</nonProxyHosts>
+        </proxy>
+        -->
+    </proxies>
 </settings>

@@ -6,6 +6,7 @@ bw() {
 source "$(dirname "$0")/bw-functions.bash"
 note="history"
 file="$HOME/.bash_history"
+clean_file
 
 # .bash_history IF EXISTS UPLOAD CONTENT FILE TO BW
 # Check if the login was successful

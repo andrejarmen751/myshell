@@ -1,2 +1,2 @@
 #!/bin/bash
-sudo docker exec -it maven /bin/bash
+docker exec -it maven /bin/bash
