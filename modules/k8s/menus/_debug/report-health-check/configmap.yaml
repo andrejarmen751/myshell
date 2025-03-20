@@ -246,11 +246,11 @@ data:
     \"$file\"\ndone\nprintf '\\e[0m'\necho ''\n\necho '######## WARNINGS ##################'\nprintf
     '\\e[93m'\nfor file in \"$file_checkapihealth\" \"$file_checknodes\" \"$file_checkpods\"
     \"$file_checkpvcs\" \"$file_checkevents\" \"$file_checkcertificates\"; do\n    grep
-    '^\\[WARNING\\]' \"$file\" | grep -v 'health-check-cronjob.*namespace logicalis'\ndone
+    '^\\[WARNING\\]' \"$file\" | grep -v 'health-check-cronjob.*namespace debug'\ndone
     \nprintf '\\e[0m'\n\necho ''\necho '######## CRITICALS #################'\nprintf
     '\\e[91m'\nfor file in \"$file_checkapihealth\" \"$file_checknodes\" \"$file_checkpods\"
     \"$file_checkpvcs\" \"$file_checkevents\" \"$file_checkcertificates\"; do\n    grep
-    '^\\[CRITICAL\\]' \"$file\" | grep -v 'health-check-cronjob.*namespace logicalis'\ndone\nif
+    '^\\[CRITICAL\\]' \"$file\" | grep -v 'health-check-cronjob.*namespace debug'\ndone\nif
     [ -f \"/tmp/clusteroperator.txt\" ]; then awk 'NR > 1 && $3 != \"True\" {printf
     \"[CLUSTEROPERATOR] %s %s %s %s %s %s\\n\", $1, $2, $3, $4, $5, $6}' $file_clusteroperator\nprintf
     '\\e[0m';fi\n\n\nrm \"$file_checkapihealth\" \"$file_checknodes\" \"$file_checkpods\"
@@ -265,4 +265,4 @@ data:
 kind: ConfigMap
 metadata:
   name: health-check-scripts
-  namespace: logicalis
+  namespace: debug

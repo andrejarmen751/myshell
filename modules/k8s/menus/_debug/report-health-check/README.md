@@ -10,7 +10,7 @@ Depende del entorno (Openshift o AKS) se tiene que desplegar yamls ubicados en l
 
 ````
 kubectl apply -f cluster-role.yaml
-kubectl apply -f role-binding.yaml -n logicalis
+kubectl apply -f role-binding.yaml -n debug
 ````
 
 2. Create Configmap
@@ -24,17 +24,17 @@ Se puede aplicar el manifiesto yaml configmap.yaml o bien si se hacen modificaci
 ````
 kubectl create configmap health-check-scripts \
   --from-file=oneliner.sh \
-  -n logicalis
+  -n debug
 ````
 
 Para obtener el yaml del configmap:
 
 ````
-kubectl get configmap health-check-scripts -n logicalis -o yaml > configmap.yaml
+kubectl get configmap health-check-scripts -n debug -o yaml > configmap.yaml
 ````
 
 3. Apply cronjob
 
 ````
-kubectl apply -f cronjob.yaml -n logicalis
+kubectl apply -f cronjob.yaml -n debug
 ````

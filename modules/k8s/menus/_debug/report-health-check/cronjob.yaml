@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: health-check-cronjob
-  namespace: logicalis
+  namespace: debug
 spec:
   schedule: "*/5 * * * *"
   #schedule: "1 6 * * 1-5"
@@ -41,7 +41,7 @@ spec:
               limits:
                 memory: "512Mi"
                 cpu: "500m"
-          serviceAccountName: logicalis-report-health-check 
+          serviceAccountName: debug-report-health-check 
           restartPolicy: Never
           volumes:
           - name: scripts

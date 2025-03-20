@@ -501,7 +501,7 @@ echo ''
 echo '######## WARNINGS ##################'
 printf '\e[93m'
 for file in "$file_checkapihealth" "$file_checknodes" "$file_checkpods" "$file_checkpvcs" "$file_checkevents" "$file_checkcertificates"; do
-    grep '^\[WARNING\]' "$file" | grep -v 'health-check-cronjob.*namespace logicalis'
+    grep '^\[WARNING\]' "$file" | grep -v 'health-check-cronjob.*namespace debug'
 done 
 printf '\e[0m'
 
@@ -509,7 +509,7 @@ echo ''
 echo '######## CRITICALS #################'
 printf '\e[91m'
 for file in "$file_checkapihealth" "$file_checknodes" "$file_checkpods" "$file_checkpvcs" "$file_checkevents" "$file_checkcertificates"; do
-    grep '^\[CRITICAL\]' "$file" | grep -v 'health-check-cronjob.*namespace logicalis'
+    grep '^\[CRITICAL\]' "$file" | grep -v 'health-check-cronjob.*namespace debug'
 done
 if [ -f "/tmp/clusteroperator.txt" ]; then awk 'NR > 1 && $3 != "True" {printf "[CLUSTEROPERATOR] %s %s %s %s %s %s\n", $1, $2, $3, $4, $5, $6}' $file_clusteroperator
 printf '\e[0m';fi
