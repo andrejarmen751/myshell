@@ -1,4 +1,11 @@
 #!/bin/bash
+clean_file() {
+  # Remove lines starting with # , cd or export BW_SESSION, remove non-printable characters,
+  # sort, remove repeated lines
+  awk '!/^#/' "$file" | awk '!/^export BW_SESSION/' | awk '!/^cd/' | tr -cd '\11\12\15\40-\176' | sort | uniq > "$file"_cleaned
+  mv "$file"_cleaned "$file"
+}
+
 item_id() {
 	bw get item "$note" | jq -r '.id'
 }
