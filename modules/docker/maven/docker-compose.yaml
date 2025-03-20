@@ -6,7 +6,7 @@ services:
       dockerfile: ./Docker/.Dockerfile
       args:
         DOCKER_REGISTRY_CACHE: "docker.io"
-        IMATGE_MAVEN: "maven:latest"
+        IMAGE_MAVEN: "maven:latest"
     volumes:
       - maven_data:/usr/src/dependencies
     restart: always
