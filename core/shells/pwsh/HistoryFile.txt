@@ -4,27 +4,12 @@ wsl -t Fedora
 wls --shutdown
 wsl --shutdowne
 code $PROFILE
-get-alias | grep exit
-get-alias | findstr exit
-echo $wsl_profile
-openssl
-(Get-PSReadLineOption).HistorySavePath
-gedit (Get-PSReadLineOption).HistorySavePath
-. $PROFILE
-choco install openssl
-cls
-& "\\wsl$\Debian\$project_path/core/shells/pwsh/pwshrc.ps1"
-h
-e
 Get-ExecutionPolicy
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 refreshenv
 cd D:\choco
 ii .
 Set-ExecutionPolicy Bypass -Scope Process -Force;
-cd .\choco-windows\
-.\choco-install.ps1
-cd D:\
 .\choco-install-windows.ps1
 choco remove openssl
 choco install openssl --install-arguments="'/DIR=D:\choco-windows\software'"
@@ -34,114 +19,17 @@ ChocolateyInstall=D:\choco-windows
 $ChocolateyInstall=D:\choco-windows
 [System.Environment]::SetEnvironmentVariable('ChocolateyInstall', 'D:\choco-windows', 'Machine')
 [System.Environment]::SetEnvironmentVariable('ChocolateyInstall', 'D:\choco-windows', 'User')
-choco uninstall chocolatey
-choco list
-choco uninstall openssl
-whereis openssl
-yq
-choco install yq
-choco install jq
-choco --help
-choco search 
-choco search docker
-choco search docker | findstr docker
-choco install gedit
-choco install nano
-nano (Get-PSReadLineOption).HistorySavePath
-nano test
-choco remove nano
-choco delete nano
-h | findstr choco
-choco uninstall nano
-choco install devbox-nano
-choco uninstall devbox-nano
-coop
-scoop
-irm get.scoop.bash -outfile 'install.ps1'
 choco install nano --install-arguments="'/DIR=D:\choco-windows\software'"
 choco uninstall nano --install-arguments="'/DIR=D:\choco-windows\software'"
-choco install nano-win --install-arguments="'/DIR=D:\choco-windows\software'"
-choco uninstall nano-win --install-arguments="'/DIR=D:\choco-windows\software'"
-nano-win test
-ed test
-choco install vim
-vim test
-vi test
 vim (Get-PSReadLineOption).HistorySavePath
 choco uninstall vim
-bash -c “nano filename.txt”
-get-alias | findstr nano
-nano
 echo (Get-PSReadLineOption).HistorySavePath
-debian
-nano \\wsl$\Debian\/home/storibio/Documents/myshell/core/shells/pwsh/HistoryFile.txt
-nano \\wsl$\Debian\home\storibio\Documents\myshell\core\shells\pwsh\HistoryFile.txt
-ls \\wsl$\Debian\home\storibio\Documents\myshell\core\shells\pwsh\HistoryFile.txt
-nano \\wsl$\Debian\home\storibio\test
-nano \\wsl$\Debian\test
-nano \\wsl$\\Debian\\test
-nano //wsl$//Debian//test
-ls
-nano .\.bashrc.bat
-nano /mnt/c/test
-nano /mnt/c/Users/storibio/test
 Get-Module PSReadLine
-clse
-h | pause
-h pause
 nano h
 test
 alias
-alias | findstr Custom
-alias | grep Custom
 alacritty.exe migrate
 alacritty.exe migrate --config-file D:\alacritty.yaml
-alacritty --config-file D:\alacritty.toml
-wsl -d Debian
-echo $HOME
-wsl --update
-sudo apt upgrade pwsh
-sudo dpkg -l | grep pwsh
-ws
-ubuntu
-wsl -d Ubuntu
-exit
-wsl -d debian
-ping api.gmao.northeurope.aroapp.io
-oc
-choco install oc
-wsl -d fedora
-path
-cd C:\Users\storibio\
-cd .\oc\
-.\oc.exe
-C:\Users\storibio\oc\oc.exe
-cd
-tracert api.gmao.northeurope.aroapp.io
-tracert console-openshift-console.apps.gmao.northeurope.aroapp.io
-cls
-cd C:\Users\storibio\
-cd .\oc\
-tracert console-openshift-console.apps.gmao.northeurope.aroapp.io
-tracert api.gmao.northeurope.aroapp.io
-wsl -d debian
-curl.exe ifconfig.me
-cls
-ipconfig 
-ipconfig /all
-cls
-.\oc.exe whoami
-wsl -d debian
-VBoxManage createvm --name Redox --register
-cd C:\Program Files\Oracle\VirtualBox\
-cd "C:\Program Files\Oracle\VirtualBox\"
-cls
-VBoxManage createvm --name Redox --register
-.\VBoxManage.exe createvm --name Redox --register
-VBoxManage modifyvm Redox --memory 2048 --vram 32 --nic1 nat --nictype1 82540EM \
---cableconnected1 on --usb off --keyboard ps2 --mouse ps2 --audiocontroller hda \
---audioout on --nestedpaging oncls
-clear
 .\VBoxManage modifyvm Redox --memory 512 --vram 32 --nic1 nat --nictype1 82540EM --cableconnected1 on --usb off --keyboard ps2 --mouse ps2 --audiocontroller hda --audioout on --nestedpaging on
 .\VBoxManage storagectl Redox --name SATA --add sata --bootable on --portcount 1
 .\VBoxManage storageattach Redox --storagectl SATA --port 0 --device 0 --type hdd --medium C:\VMs\RedoxOS\redox_desktop.vdi
