@@ -12,7 +12,7 @@ alias ps="ps -elfj --forest | less -N"
 alias ls="ls -lah --color"
 alias nano="nano -l"
 alias h="history"
-alias e="bash $project_path/core/scripts/exit.bash;exit"
+alias e="exit
 alias clear_ram="sudo bash -c 'echo 1 > /proc/sys/vm/drop_caches'"
 alias cat_input="read input; cat * | grep -r --exclude-dir=".*" $input"
 # bw - bitwarden
