@@ -6,6 +6,9 @@ sleep 1
 ## Time lapse bash loading
 initial_result=$(date +%s)
 # Load functions
+if [ -f "$project_path"/core/shells/bash/functions/checks.bash ]; then
+	. "$project_path"/core/shells/bash/functions/checks.bash
+fi
 if [ -f "$project_path"/core/shells/bash/functions/colors.bash ]; then
 	. "$project_path"/core/shells/bash/functions/colors.bash
 fi
@@ -20,6 +23,9 @@ if [ -f "$project_path"/core/shells/bash/functions/yamlfmt.bash ]; then
 fi
 if [ -f "$project_path"/core/shells/bash/functions/hadolint.bash ]; then
 	. "$project_path"/core/shells/bash/functions/hadolint.bash
+fi
+if [ -f "$project_path"/core/shells/bash/functions/myshell.bash ]; then
+	. "$project_path"/core/shells/bash/functions/myshell.bash
 fi
 if [ -f "$project_path"/core/shells/bash/functions/shellcheck.bash ]; then
 	. "$project_path"/core/shells/bash/functions/shellcheck.bash

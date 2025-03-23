@@ -12,7 +12,7 @@ alias ps="ps -elfj --forest | less -N"
 alias ls="ls -lah --color"
 alias nano="nano -l"
 alias h="history"
-alias e="bash $project_path/core/scripts/exit.bash;exit"
+alias e="exit"
 alias clear_ram="sudo bash -c 'echo 1 > /proc/sys/vm/drop_caches'"
 alias cat_input="read input; cat * | grep -r --exclude-dir=".*" $input"
 # bw - bitwarden
@@ -30,11 +30,6 @@ alias gc="git log --branches --not --remotes"
 alias gsoft="git reset --soft HEAD~1"
 alias ghard="git reset --hard HEAD~1"
 alias gpr="gh pr list"
-# core
-## core - scripts - commands 
-alias myshell="/bin/bash $project_path/core/scripts/myshell.bash"
-alias checks="bash $project_path/core/scripts/checks.bash"
-alias genera_password="bash $project_path/core/scripts/genera_password.bash"
 # modules
 ## modules - help - commands
 alias help_docker="bash $project_path/modules/help/docker/docker.bash"
