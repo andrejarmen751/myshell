@@ -2,17 +2,56 @@
 
 Framework for bash
 
+- [Project details](#project-details)
+  - [Core](#core)
+  - [Modules](#modules)
+    - [Help](#help)
+    - [cloud](#cloud)
+    - [Docker](#docker)
+    - [k8s](#k8s)
+    - [ssh](#ssh)
+    - [bw](#bw)
+    - [John](#john)
+    - [Utils](#utils)
 - [Requirements](#requirements)
 - [How to use](#how-to-use)
   - [Bash](#bash)
   - [Powershell](#powershell)
-- [Project details](#project-details)
-  - [Core](#core)
-  - [Modules](#modules)
+
+## Project details:
+
+You will use .bash_profile file (section 'how to use') to load this project and the two main sections:
+- Core: Files for managing shell profile
+- Modules: Section for tools
+
+### Core
+
+- Scripts folder:
+  - Random password generator (handled by powershell, will be replaced by another language soon)
+- Shells folder:
+  - bash: 
+    - aliases
+    - functions
+    - jobs
+    - profiles
+    - .bash_profile
+    - .bashrc
+  - pwsh: Containing pwsh environment (will be deprecated soon)
+
+### Modules
+
+- #### Help
+- #### cloud
+- #### Docker
+- #### k8s
+- #### ssh
+- #### bw
+- #### John
+- #### Utils
 
 ## Requirements
 
- - Basic packages ```` git file curl ````
+- Basic packages ```` git file curl ````
 
 Mainly tested on bash 5.2+.
 
@@ -35,47 +74,13 @@ exec -l $SHELL
 
 ### Powershell:
 
-Once done the bash configuration, if you have "pwsh" installed, automatically will set the $PROFILE for powershell - $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1 
+Once done the bash configuration, if you have "pwsh" installed, automatically will set the $PROFILE for powershell - $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
 
 If you want to use this profile from Windows:
 
-1. Install WSL2 distro 
+1. Install WSL2 distro
 2. Edit $PROFILE (ex: code $PROFILE, from a powershell terminal) with content from content core/shells/pwsh/Microsoft.PowerShell_profile.ps1
 
 Remember to set the value for section "VARIABLE DECLARATION":
- - $global:distro=xxx
- - $global:project_path=xxx (relative path from $HOME)
-
-## Project details:
-
-Two main sections:
-- Core: Files for managing shell profile
-- Modules: Section for tools
-
-### Core
-
-Core files:
-core/session (called if exists on .bashrc/zshrc file)
-.var - To create variables for sensitive data like domains into scripts. Added in .gitignore.
-.aliases - Enable aliases.
-
-- shell variable session
-- some scripts create random files on /tmp (this random files are removed after the script is done)
-- .gitattributes to control LF/CRLF format
-- jobs loaded to track public ip change and user shell init
-- main functions loaded for other scripts and user shell:
-    - colors: possibility to user colors
-    - crlf_to_lf: convert all files from current path and recursive except files like .ps1, .psm1, binaries ... 
-    - genera_password: create random strings based on a criteria 
-    - script_path: gets the "$0" value for running script
-
-### Modules
-
-- Help
-- cloud
-- Docker
-- k8s
-- ssh
-- bw
-- John
-- Utils
+- $global:distro=xxx
+- $global:project_path=xxx (relative path from $HOME)
